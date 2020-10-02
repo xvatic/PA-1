@@ -41,6 +41,7 @@ int main(int argc, const char * argv[]) {
     char x[n+1];
     char y[n+1];
     fgets(x,sizeof(x), stdin);
+    printf("\n");
     fgets(y,sizeof(y), stdin);
     
     printf("%d\n%d\n", convert(x, n), convert(y, n));

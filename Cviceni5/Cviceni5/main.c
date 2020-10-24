@@ -27,6 +27,46 @@ int main(int argc, const char * argv[]) {
         printf("-");
     }
     printf("+\n");
+    for(int i=1; i<=a; i++) {
+        if(i%2==0) {
+            for(int j=1; j<=b; j++) {
+                printf("|");
+                for(int c=1; c<=a; c++) {
+                    
+                    for(int k=1; k<=b; k++) {printf("X");}
+                    c++;
+                    if(c>=a && a%2!=0) {
+                        break;
+                    }
+                    for(int k=1; k<=b; k++) {printf(" ");}
+                   
+                }
+                printf("|\n");
+            }
+        } else {
+            for(int j=1; j<=b; j++) {
+                printf("|");
+                for(int c=1; c<=a; c++) {
+                    
+                    for(int k=1; k<=b; k++) {printf(" ");}
+                    c++;
+                    if(c>=a && a%2!=0) {
+                        break;
+                    }
+                    for(int k=1; k<=b; k++) {printf("X");}
+                   
+                }
+                printf("|\n");
+                
+                
+            }
+        }
+    }
+    printf("+");
+    for (int i = 1; i<=l; i++) {
+        printf("-");
+    }
+    printf("+\n");
     
     return 0;
 }

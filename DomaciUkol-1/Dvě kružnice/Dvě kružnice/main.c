@@ -27,6 +27,9 @@ int main(int argc, const char * argv[]) {
     TKruznice k1,k2;
     double x, y, r;
     long double d, d1, d2, f1, f2;
+    short int xx = -0x5db3; /* !!! short */
+
+    printf ( "%x", xx );
 
     printf("Zadejte parametry kruznice #1:\n");
     if (scanf("%lf %lf %lf", &x, &y, &r) != 3 || r <= 0) {

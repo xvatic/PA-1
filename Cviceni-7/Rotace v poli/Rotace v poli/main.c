@@ -18,22 +18,21 @@ void rotateArray ( int array [], int arrayLen, int rotateBy )
     
     if (rotateBy > 0) {
         for(int i =0; i <rotateBy; i++) {
-            int buff = array[0];
-            array[0] = array[arrayLen-1];
-            for(int j = 1; j< arrayLen-1; j++) {
-                array[arrayLen-j] = array[arrayLen-j-1];
+            int buff = array[arrayLen-1];
+            for(int j = arrayLen-1; j>=1; j--) {
+                array[j] = array[j-1];
             }
-            array[1] = buff;
+            array[0] = buff;
         }
         
     } else if (rotateBy < 0){
         for(int i =0; i >rotateBy; i--) {
-            int buff = array[arrayLen-1];
-            array[arrayLen-1] = array[0];
-            for(int j = 1; j< arrayLen-1; j++) {
-                array[j-1] = array[j];
+            int buff = array[0];
+            
+            for(int j = 0; j<arrayLen-1; j++) {
+                array[j] = array[j+1];
             }
-            array[arrayLen-2] = buff;
+            array[arrayLen-1] = buff;
         }
     }
     
@@ -67,7 +66,7 @@ int main (int argc, char * argv [])
     
     int in5 [100000];
     for(int i=0;i<100000;i++){in5[i]=rand()%217000000-100000000;};
-    rotateArray ( in5, 100000, 100000 );
+    rotateArray ( in5, 100000, 0 );
     rotateArray ( in0, 5, 1 );
     assert ( identicalArrays ( in0, out0, 5 ) );
     rotateArray ( in1, 5, -1 );

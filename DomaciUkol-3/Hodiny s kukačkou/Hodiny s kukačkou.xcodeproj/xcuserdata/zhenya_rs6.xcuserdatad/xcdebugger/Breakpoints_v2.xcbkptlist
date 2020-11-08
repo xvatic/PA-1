@@ -7,32 +7,80 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6226E951-ED8F-41DE-82B6-20FDFBF7454E"
+            uuid = "C9B4A108-DC46-4343-ADE7-B0CF78E21622"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Hodiny s kukac&#x30c;kou/main.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
-            landmarkName = "main(argc, argv)"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "count1(y, m1, m2, d1, d2, h1, h2, i1, i2)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7EFC700D-90C0-414B-9CD0-E584A22F36AC"
+            uuid = "9ADB7E2D-2708-4481-BFA7-744F52CA4FFB"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Hodiny s kukac&#x30c;kou/main.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
-            landmarkName = "main(argc, argv)"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
+            landmarkName = "count1(y, m1, m2, d1, d2, h1, h2, i1, i2)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3834C3F2-AA88-4F2F-AAD0-59F233B217D0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Hodiny s kukac&#x30c;kou/main.c"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
+            landmarkName = "count1(y, m1, m2, d1, d2, h1, h2, i1, i2)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "88BBC74A-A78A-4B12-AF83-7CEEFFBADD42"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Hodiny s kukac&#x30c;kou/main.c"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "254"
+            endingLineNumber = "254"
+            landmarkName = "count2(y1, y2, m1, m2, d1, d2, h1, h2, i1, i2, dif)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AE3FF450-D8B0-425E-9539-77B150B42386"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Hodiny s kukac&#x30c;kou/main.c"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "count1(y, m1, m2, d1, d2, h1, h2, i1, i2)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>

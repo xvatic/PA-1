@@ -39,7 +39,7 @@ int binsrch(long long pp[], long long cislo,  int am) {
     return 0;
 }
 void uniquearray(long long number[], long long amount) {
-    long long arr2[50000];
+    long long arr2[10003];
     int count = 0;
     for(long long i=0; i<= amount; i++) {
         if(binsrch(arr2, number[i], count) == 0) {
@@ -47,7 +47,7 @@ void uniquearray(long long number[], long long amount) {
             count++;
         }
     }
-    memcpy(number, arr2, 50000);
+    memcpy(number, arr2, 10000);
 }
 
 void quicksort(long long number[],long long first,long long last){
@@ -149,7 +149,7 @@ long long findNumberOfTriangles(long long arr[], long long am[], int n)
 }
 
 int main(int argc, const char * argv[]) {
-    long long arr[10000];
+    long long arr[10003];
     int nv=0;
     long long a;
     int ind = 0;
@@ -157,9 +157,11 @@ int main(int argc, const char * argv[]) {
     int result;
     printf("Delky nosniku:\n");
     while ((result = (scanf("%lld", &a))) != EOF) {
+        if(result != 1) {
+            nv=1;
+        }
         if(scanf("%c", &c) == 1 && ((c != ' ' && c != '\n') || (c == '-'))) {
             nv=1;
-            break;
         }
         
         if (a<=0) {
@@ -173,7 +175,7 @@ int main(int argc, const char * argv[]) {
         }
         c='\0';
     }
-    arr[ind] = -1;
+    
     if(ind<3) {
         printf("Nespravny vstup.\n");
         return 1;
@@ -182,6 +184,7 @@ int main(int argc, const char * argv[]) {
         printf("Nespravny vstup.\n");
         return 1;
     }
+    
     quicksort(arr, 0,ind-1);
     int amount = 0;
     long long amountofsec[10000];

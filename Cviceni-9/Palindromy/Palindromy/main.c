@@ -9,17 +9,90 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 int check(char* str) {
-    printf("%c", str[0]);
+    int i = 0;
+    int j = (int)strlen(str)-2;
+    while(i != j && i+1 != j) {
+        if (isspace(str[i]) != 0) {
+            i++;
+            continue;
+        }
+        if (isspace(str[j]) != 0) {
+            j--;
+            continue;
+        }
+        if (str[i] != str[j]) {
+            break;
+        }
+        i++;
+        j--;
+        if (i == j || i+1 == j) {
+            return 2;
+        }
+    }
+    for(int i = 0; i<(int)strlen(str)-1; i++){
+      str[i] = tolower(str[i]);
+    }
+    i = 0;
+    j = (int)strlen(str)-2;
+    while(i != j && i+1 != j) {
+        if (isspace(str[i]) != 0) {
+            i++;
+            continue;
+        }
+        if (isspace(str[j]) != 0) {
+            j--;
+            continue;
+        }
+        if (str[i] != str[j]) {
+            return 0;
+        }
+        i++;
+        j--;
+        if (i == j || i+1 == j) {
+            return 1;
+        }
+    }
     return 0;
 }
 
 int main(int argc, const char * argv[]) {
     char *str = NULL;
     size_t len = 0;
+    printf("Zadejte retezec:\n");
     while(getline(&str, &len , stdin) != -1) {
-        printf("%zd\n",strlen(str));
-        check(str);
+        if (str[strlen(str)-1] != '\n') {
+            printf("Nespravny vstup.\n");
+            return 1;
+        }
+        if(strlen(str) == 1) {
+            printf("Nespravny vstup.\n");
+            return 1;
+        }
+        for(int i = 0; i<(int)strlen(str)-1; i++) {
+            if(isspace(str[i]) == 0) {
+                break;
+            }
+            if (i == (int)strlen(str)-2) {
+                printf("Nespravny vstup.\n");
+                return 1;
+            }
+        }
+        
+        int res = check(str);
+        if (res == 0) {
+            printf("Retezec neni palindrom.\n");
+            
+        } else if (res == 2) {
+            printf("Retezec je palindrom (case-sensitive).\n");
+            
+        } else {
+            printf("Retezec je palindrom (case-insensitive).\n");
+            
+        }
+            
     }
+    free(str);
     return 0;
 }

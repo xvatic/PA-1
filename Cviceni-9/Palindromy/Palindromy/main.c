@@ -13,7 +13,23 @@
 int check(char* str) {
     int i = 0;
     int j = (int)strlen(str)-2;
-    while(i != j && i+1 != j) {
+    if ((int)strlen(str)-2 == 0) {
+        return 2;
+    }
+    if ((int)strlen(str)-2 == 1) {
+        if (str[i] == str[j]) {
+            return 2;
+        }
+        if (tolower(str[i]) == tolower(str[j])) {
+            return 1;
+        }
+        return 0;
+    }
+    while(1) {
+       
+        if ((i == j && (strlen(str)-1)%2!=0) || (i+1 == j && (strlen(str)-1)%2==0)) {
+            return 2;
+        }
         if (isspace(str[i]) != 0) {
             i++;
             continue;
@@ -27,7 +43,7 @@ int check(char* str) {
         }
         i++;
         j--;
-        if (i == j || i+1 == j) {
+        if ((i == j && (strlen(str)-1)%2!=0) || (i+1 == j && (strlen(str)-1)%2==0)) {
             return 2;
         }
     }
@@ -36,7 +52,10 @@ int check(char* str) {
     }
     i = 0;
     j = (int)strlen(str)-2;
-    while(i != j && i+1 != j) {
+    while(1) {
+        if ((i == j && (strlen(str)-1)%2!=0)|| (i+1 == j && (strlen(str)-1)%2==0)) {
+            return 1;
+        }
         if (isspace(str[i]) != 0) {
             i++;
             continue;
@@ -50,7 +69,7 @@ int check(char* str) {
         }
         i++;
         j--;
-        if (i == j || i+1 == j) {
+        if ((i == j && (strlen(str)-1)%2!=0)|| (i+1 == j && (strlen(str)-1)%2==0)) {
             return 1;
         }
     }

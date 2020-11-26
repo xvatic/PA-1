@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define SIZE 100
+#define SIZE 10
 
 typedef struct DateTime{
     int mon;
@@ -27,15 +27,15 @@ typedef struct Request {
     TDateTime dt;
 } TRequest;
 
-int extendArray (TRecord * rec, int* size){
+int extendArray (TRecord ** rec, int* size){
     *size *= 1.5;
-    rec = (TRecord*)realloc(rec, *size*sizeof(TRecord));
+    *rec = (TRecord*)realloc(*rec, *size*sizeof(TRecord));
     return 0;
 }
 
-int extendTempArray (TOutput * rec, int* size){
+int extendTempArray (TOutput ** rec, int* size){
     *size *= 1.5;
-    rec = (TOutput*)realloc(rec, *size*sizeof(TOutput));
+    *rec = (TOutput*)realloc(*rec, *size*sizeof(TOutput));
     return 0;
 }
 
@@ -90,7 +90,8 @@ int convertMonth (int m, char* month) {
         "Nov",
         "Dec"
     };
-    month = months[m-1];
+
+    strcpy(month, months[m-1]);
     return 0;
 }
 
@@ -174,7 +175,7 @@ int searchRecord (TRecord* arr, TRequest request, int size, char* m) {
             } else {
                 count++;
                 if (count == buffSize-1) {
-                    extendTempArray(tempArr, &buffSize);
+                    extendTempArray(&tempArr, &buffSize);
                 }
                 initdt(&tempArr[count].dt, arr[i].dt);
                 tempArr[count].amount = 1;
@@ -185,15 +186,22 @@ int searchRecord (TRecord* arr, TRequest request, int size, char* m) {
     }
     if (count == -1) {
         printf("> Automobil nenalezen.\n");
+        free(tempArr);
         return 0;
     } else {
         for (int i = 0; i <= count; i++) {
             if (compareDates(&tempArr[i].dt, &request.dt) == 0) {
                 printf("> Presne: %3s %d %02d:%02d, %dx [", m, request.dt.day, request.dt.hour, request.dt.minute, tempArr[i].amount);
                 for (int j = 0; j< tempArr[i].amount; j++) {
-                    printf(" %d", tempArr[i].cams[j]);
+                    if (tempArr[i].amount == 1 || j == tempArr[i].amount-1) {
+                        printf("%d", tempArr[i].cams[j]);
+                        continue;
+                    }
+                    
+                    printf("%d, ", tempArr[i].cams[j]);
                 }
                 printf("]\n");
+                free(tempArr);
                 return 0;
             
             }
@@ -205,16 +213,30 @@ int searchRecord (TRecord* arr, TRequest request, int size, char* m) {
                     convertMonth(tempArr[i].dt.mon, m);
                     printf("> Predchazejici: %3s %d %02d:%02d, %dx [", m, tempArr[i].dt.day, tempArr[i].dt.hour, tempArr[i].dt.minute, tempArr[i].amount);
                     for (int j = 0; j< tempArr[i].amount; j++) {
-                        printf(" %d", tempArr[i].cams[j]);
+                        if (tempArr[i].amount == 1 || j == tempArr[i].amount-1) {
+                            printf("%d", tempArr[i].cams[j]);
+                            continue;
+                        }
+                        
+                        printf("%d, ", tempArr[i].cams[j]);
+                        
                     }
+                    printf("]\n");
                     i++;
                 }
 
                     convertMonth(tempArr[i].dt.mon, m);
                     printf("> Pozdejsi: %3s %d %02d:%02d, %dx [", m, tempArr[i].dt.day, tempArr[i].dt.hour, tempArr[i].dt.minute, tempArr[i].amount);
                     for (int j = 0; j< tempArr[i].amount; j++) {
-                        printf(" %d", tempArr[i].cams[j]);
+                        if (tempArr[i].amount == 1 || j == tempArr[i].amount-1) {
+                            printf("%d", tempArr[i].cams[j]);
+                            continue;
+                        }
+                        
+                        printf("%d, ", tempArr[i].cams[j]);
                     }
+                printf("]\n");
+                free(tempArr);
                 return 0;
             }
                 
@@ -222,15 +244,23 @@ int searchRecord (TRecord* arr, TRequest request, int size, char* m) {
                 convertMonth(tempArr[i].dt.mon, m);
                 printf("> Predchazejici: %3s %d %02d:%02d, %dx [", m, tempArr[i].dt.day, tempArr[i].dt.hour, tempArr[i].dt.minute, tempArr[i].amount);
                 for (int j = 0; j< tempArr[i].amount; j++) {
-                    printf(" %d", tempArr[i].cams[j]);
+                    if (tempArr[i].amount == 1 || j == tempArr[i].amount-1) {
+                        printf("%d", tempArr[i].cams[j]);
+                        continue;
+                    }
+                    
+                    printf("%d, ", tempArr[i].cams[j]);
                 }
+                printf("]\n");
                 printf("> Pozdejsi: N/A\n");
+                free(tempArr);
                 return 0;
             }
         }
     
     
     }
+    
     return 0;
 }
 
@@ -275,104 +305,83 @@ int checkInput (int d, int hh, int mm, int nc, int* month, char* nz, char* m) {
     }
 
 }
-//sscanf(str, "%d : %1000s %3s %d %d : %d", &nc, &nz, &m, &d, &hh, &mm) == 6
-int parse(TRecord* rec, int* size, char* str, int* count) {
-    int d, hh, mm, nc, month;
-    
-    char nz[1001];
-    char m[4];
-    char* piece =  strtok(str,"[,{}]");
 
-    while(piece != NULL) {
-        if (strlen(piece) < 15) {
-            piece =  strtok(NULL,"[,{}]");
-            continue;
-        }
-        if(sscanf(piece, " %d : %1000s %3s %d %d : %d ", &nc, nz, m, &d, &hh, &mm) == 6){
-            if (checkInput(d, hh, mm, nc, &month, nz, m) == 1) {
-                initRecord(&rec[*count], d, hh, mm, nc, month, nz);
-                ++*count;
-            } else {
-                return 0;
-            }
-            if (count == size-1) {
-                extendArray(rec, size);
-            }
-        } else {
-            return 0;
-        }
-        
-        piece =  strtok(NULL,"[,{}]");
-    }
-    return 1;
-}
+
 
 int main ( void )
  {
      int borderControlFlag = 0;
-     char *str = NULL;
-     size_t len = 0;
+     
      printf("Data z kamer:\n");
      int count = 0;
-     int res = 0;
      int size = SIZE;
+     char c;
+     int bytes_now;
+     TRequest request;
      TRecord *arr = NULL;
      arr = (TRecord*)malloc(size* sizeof(TRecord));
-     while(getline(&str, &len , stdin) != -1) {
-         if (strchr(str, '{') != NULL) {
-             borderControlFlag++;
-         }
-         if (strchr(str, '}') != NULL) {
-             borderControlFlag++;
-             res = parse(arr, &size, str, &count);
-             if (res == 0) {
-                 printf("Nespravny vstup.\n");
-                 return 0;
-             }
-             break;
-         }
-         res = parse(arr, &size, str, &count);
-         if (res == 0) {
-             printf("Nespravny vstup.\n");
-             return 0;
-         }
-         if (borderControlFlag == 0 || borderControlFlag == 2) {
-             printf("Nespravny vstup.\n");
-             return 0;
-         }
-         if (strchr(str, '}') != NULL) {
-             borderControlFlag++;
-         }
+     scanf( " %c%n",  &c, & bytes_now);
+     if (borderControlFlag == 0 && c == '{'){
+         borderControlFlag++;
      }
-     if (borderControlFlag == 1) {
+      int d, hh, mm, nc, month;
+      
+      char nz[1001];
+      char m[4];
+     int res;
+    //int res = scanf(" %d : %1000s %3s %d %d : %d %c%n",  &nc, nz, m, &d, &hh, &mm, &c, & bytes_now) ;
+     while ((res = scanf(" %d : %1000s %3s %d %d : %d %c%n",  &nc, nz, m, &d, &hh, &mm, &c, & bytes_now)) ){
+                if (res == -1) {
+                    break;
+                }
+                if (checkInput(d, hh, mm, 0, &month, nz, m) == 1 && res == 7) {
+                    initRecord(&arr[count], d, hh, mm, nc, month, nz);
+                    ++count;
+                    if (c == '}') {
+                        borderControlFlag++;
+                        if (borderControlFlag == 1) {
+                            printf("Nespravny vstup.\n");
+                            free(arr);
+                            return 0;
+                        }
+                        qsort(arr, count, sizeof(TRecord), compareRecords);
+                        printf("Hledani:\n");
+                    //    res = scanf(" %1000s %3s %d %d : %d %n", nz, m, &d, &hh, &mm, & bytes_now);
+                        while ((res = scanf(" %1000s %3s %d %d : %d %n", nz, m, &d, &hh, &mm, & bytes_now) )){
+                            if (res == -1) {
+                                break;
+                            }
+                              if (checkInput(d, hh, mm, 0, &month, nz, m) == 1 && res == 5) {
+                                   initRequest(&request, d, hh, mm, month, nz);
+                                   searchRecord(arr, request, count, m);
+                               } else {
+                                   printf("Nespravny vstup.\n");
+                                   free(arr);
+                                   return 0;
+                               }
+                        
+                           }
+                        
+                        break;
+                    }
+                    if (c != ',') break;
+                    if (count == size-8) {
+                        extendArray(&arr, &size);
+                    }
+                  
+            }
+         
+     }
+ 
+     
+    
+     
+     if (borderControlFlag != 2) {
          printf("Nespravny vstup.\n");
+         free(arr);
          return 0;
      }
      
-     qsort(arr, count, sizeof(TRecord), compareRecords);
-     printf("Hledani:\n");
-     TRequest request;
-     int d, hh, mm, month;
-     
-     char nz[1001];
-     char m[4];
-     while(getline(&str, &len , stdin) != -1) {
-         if(sscanf(str, "  %1000s %3s %d %d : %d ", nz, m, &d, &hh, &mm) == 5){
-                    if (checkInput(d, hh, mm, 0, &month, nz, m) == 1) {
-                        initRequest(&request, d, hh, mm, month, nz);
-                        searchRecord(arr, request, count, m);
-                    } else {
-                        printf("Nespravny vstup.\n");
-                        return 0;
-                    }
-                } else {
-                    printf("Nespravny vstup.\n");
-                    return 0;
-                }
-     }
-     
-     
-     free(str);
      free(arr);
      return 0;
  }

@@ -7,22 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D049891D-783C-499D-B036-1DF7E8F46BEB"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Kamerovy&#x301; syste&#x301;m/main.c"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "378"
-            endingLineNumber = "378"
-            landmarkName = "main()"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "1FA2B652-8A74-4197-AC03-7E8D04032483"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -30,8 +14,8 @@
             filePath = "Kamerovy&#x301; syste&#x301;m/main.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "384"
-            endingLineNumber = "384"
+            startingLineNumber = "424"
+            endingLineNumber = "424"
             landmarkName = "main()"
             landmarkType = "9">
          </BreakpointContent>
@@ -46,8 +30,8 @@
             filePath = "Kamerovy&#x301; syste&#x301;m/main.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "341"
-            endingLineNumber = "341"
+            startingLineNumber = "385"
+            endingLineNumber = "385"
             landmarkName = "main()"
             landmarkType = "9">
          </BreakpointContent>
@@ -62,24 +46,8 @@
             filePath = "Kamerovy&#x301; syste&#x301;m/main.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "347"
-            endingLineNumber = "347"
-            landmarkName = "main()"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "6875BB1D-8C02-415C-868B-C7671CC8E61B"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Kamerovy&#x301; syste&#x301;m/main.c"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "373"
-            endingLineNumber = "373"
+            startingLineNumber = "391"
+            endingLineNumber = "391"
             landmarkName = "main()"
             landmarkType = "9">
          </BreakpointContent>
@@ -94,8 +62,8 @@
             filePath = "Kamerovy&#x301; syste&#x301;m/main.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "365"
-            endingLineNumber = "365"
+            startingLineNumber = "409"
+            endingLineNumber = "409"
             landmarkName = "main()"
             landmarkType = "9">
          </BreakpointContent>
@@ -110,8 +78,8 @@
             filePath = "Kamerovy&#x301; syste&#x301;m/main.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "333"
-            endingLineNumber = "333"
+            startingLineNumber = "377"
+            endingLineNumber = "377"
             landmarkName = "main()"
             landmarkType = "9">
          </BreakpointContent>
@@ -126,8 +94,8 @@
             filePath = "Kamerovy&#x301; syste&#x301;m/main.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "369"
-            endingLineNumber = "369"
+            startingLineNumber = "413"
+            endingLineNumber = "413"
             landmarkName = "main()"
             landmarkType = "9">
          </BreakpointContent>
@@ -142,8 +110,8 @@
             filePath = "Kamerovy&#x301; syste&#x301;m/main.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
             landmarkName = "searchRecord(arr, request, size, m)"
             landmarkType = "9">
          </BreakpointContent>
@@ -158,8 +126,8 @@
             filePath = "Kamerovy&#x301; syste&#x301;m/main.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "379"
-            endingLineNumber = "379"
+            startingLineNumber = "419"
+            endingLineNumber = "419"
             landmarkName = "main()"
             landmarkType = "9">
          </BreakpointContent>
@@ -168,14 +136,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "94781E9B-B9FF-4314-A529-3E4C198EFB20"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Kamerovy&#x301; syste&#x301;m/main.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
             landmarkName = "searchRecord(arr, request, size, m)"
             landmarkType = "9">
          </BreakpointContent>
@@ -190,8 +158,8 @@
             filePath = "Kamerovy&#x301; syste&#x301;m/main.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "337"
-            endingLineNumber = "337"
+            startingLineNumber = "381"
+            endingLineNumber = "381"
             landmarkName = "main()"
             landmarkType = "9">
          </BreakpointContent>
@@ -206,8 +174,8 @@
             filePath = "Kamerovy&#x301; syste&#x301;m/main.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "380"
-            endingLineNumber = "380"
+            startingLineNumber = "420"
+            endingLineNumber = "420"
             landmarkName = "main()"
             landmarkType = "9">
          </BreakpointContent>
@@ -222,8 +190,8 @@
             filePath = "Kamerovy&#x301; syste&#x301;m/main.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "351"
-            endingLineNumber = "351"
+            startingLineNumber = "395"
+            endingLineNumber = "395"
             landmarkName = "main()"
             landmarkType = "9">
          </BreakpointContent>
@@ -238,8 +206,8 @@
             filePath = "Kamerovy&#x301; syste&#x301;m/main.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "350"
-            endingLineNumber = "350"
+            startingLineNumber = "394"
+            endingLineNumber = "394"
             landmarkName = "main()"
             landmarkType = "9">
          </BreakpointContent>
@@ -254,8 +222,8 @@
             filePath = "Kamerovy&#x301; syste&#x301;m/main.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "364"
-            endingLineNumber = "364"
+            startingLineNumber = "408"
+            endingLineNumber = "408"
             landmarkName = "main()"
             landmarkType = "9">
          </BreakpointContent>
@@ -270,8 +238,8 @@
             filePath = "Kamerovy&#x301; syste&#x301;m/main.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "268"
-            endingLineNumber = "268"
+            startingLineNumber = "312"
+            endingLineNumber = "312"
             landmarkName = "checkInput(d, hh, mm, nc, month, nz, m)"
             landmarkType = "9">
          </BreakpointContent>

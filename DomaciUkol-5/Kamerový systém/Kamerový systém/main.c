@@ -3,6 +3,10 @@
 #include <string.h>
 #define SIZE 10
 
+/*
+   Tato struktura deklaruje formát data a času.
+   Používá se jako pole v jiných strukturách.
+*/
 typedef struct DateTime{
     int mon;
     int day;
@@ -10,35 +14,54 @@ typedef struct DateTime{
     int minute;
 } TDateTime;
 
+/*
+   Tato struktura se používá k reprezentaci dat pro výstup.
+*/
 typedef struct Output {
     TDateTime dt;
     int amount;
     int cams[1000];
 } TOutput;
 
+/*
+   Tato struktura se používá k ukládání dat o záznamech z kamer.
+*/
 typedef struct Record {
     char rz[1001];
     TDateTime dt;
     int nCam;
 } TRecord;
 
+/*
+   Tato struktura se používá k reprezentaci dotazu k vyhledání záznamů.
+*/
 typedef struct Request {
     char rz[1001];
     TDateTime dt;
 } TRequest;
 
-int extendArray (TRecord ** rec, int* size){
+/*
+   Funkce slouží k rozšíření pole typu TRecord.
+*/
+int extendArray (TRecord ** rec, int* size) {
     *size *= 1.5;
     *rec = (TRecord*)realloc(*rec, *size*sizeof(TRecord));
     return 0;
 }
 
-int extendTempArray (TOutput ** rec, int* size){
+/*
+   Funkce slouží k rozšíření pole typu TOutput.
+*/
+int extendTempArray (TOutput ** rec, int* size) {
     *size *= 1.5;
     *rec = (TOutput*)realloc(*rec, *size*sizeof(TOutput));
     return 0;
 }
 
+/*
+   Toto je komparator pro TRecord.
+   Používá se pro třídění hlavního pole qsort-em.
+*/
 int compareRecords (const void* a, const void* b) {
     TRecord *r1 = (TRecord*)a;
     TRecord *r2 = (TRecord*)b;
@@ -75,6 +98,10 @@ int compareRecords (const void* a, const void* b) {
     }
 }
 
+/*
+   Toto je funkce pro převod číselné reprezentace měsíce na slovní.
+   Používá se pouze pro výstup.
+*/
 int convertMonth (int m, char* month) {
     char months[12][4] = {
         "Jan",
@@ -95,6 +122,10 @@ int convertMonth (int m, char* month) {
     return 0;
 }
 
+/*
+   Toto je komparator pro TDateTime.
+   Používá se pouze pro vyhledávání.
+*/
 int compareDates (const void* a, const void* b) {
     TDateTime *r1 = (TDateTime*)a;
     TDateTime *r2 = (TDateTime*)b;
@@ -126,7 +157,9 @@ int compareDates (const void* a, const void* b) {
 }
 
 
-
+/*
+   Funkce funguje jako konstruktor pro TRecord.
+*/
 int initRecord (TRecord* recElem, int d, int hh, int mm, int nc, int m, char* nz) {
     recElem->dt.mon = m;
     recElem->dt.hour = hh;
@@ -136,7 +169,9 @@ int initRecord (TRecord* recElem, int d, int hh, int mm, int nc, int m, char* nz
     strcpy(recElem->rz, nz);
     return 0;
 }
-
+/*
+   Funkce funguje jako konstruktor pro TDateTime.
+*/
 int initdt (TDateTime* recElem, TDateTime selectedTime) {
     recElem->mon = selectedTime.mon;
     recElem->hour = selectedTime.hour;
@@ -145,6 +180,9 @@ int initdt (TDateTime* recElem, TDateTime selectedTime) {
     return 0;
 }
 
+/*
+   Funkce funguje jako konstruktor pro TRequest.
+*/
 int initRequest (TRequest* recElem, int d, int hh, int mm, int m, char* nz) {
     recElem->dt.mon = m;
     recElem->dt.hour = hh;
@@ -153,11 +191,14 @@ int initRequest (TRequest* recElem, int d, int hh, int mm, int m, char* nz) {
     strcpy(recElem->rz, nz);
     return 0;
 }
-
+/*
+    Funkce vytvoři pole TOutput pro hledání.
+    Toto pole obsahuje pouze záznamy s požadovaným vozem.
+    Tato metoda značně usnadňuje samotné hledání.
+ */
 int searchRecord (TRecord* arr, TRequest request, int size, char* m) {
     int buffSize = SIZE;
     TOutput *tempArr = (TOutput*)malloc(buffSize*sizeof(TOutput));
-    
     int count = -1;
     
     for (int i = 0; i < size; i++) {
@@ -264,6 +305,9 @@ int searchRecord (TRecord* arr, TRequest request, int size, char* m) {
     return 0;
 }
 
+/*
+   Funkce kontroluje správnost zadaných údajů.
+*/
 int checkInput (int d, int hh, int mm, int nc, int* month, char* nz, char* m) {
     if (hh > 23 || hh < 0 || mm > 59 || mm < 0 || d < 1) {
         return 0;
@@ -324,12 +368,12 @@ int main ( void )
      if (borderControlFlag == 0 && c == '{'){
          borderControlFlag++;
      }
-      int d, hh, mm, nc, month;
+     int d, hh, mm, nc, month;
       
-      char nz[1001];
-      char m[4];
+     char nz[1001];
+     char m[4];
      int res;
-    //int res = scanf(" %d : %1000s %3s %d %d : %d %c%n",  &nc, nz, m, &d, &hh, &mm, &c, & bytes_now) ;
+    
      while ((res = scanf(" %d : %1000s %3s %d %d : %d %c%n",  &nc, nz, m, &d, &hh, &mm, &c, & bytes_now)) ){
                 if (res == -1) {
                     break;
@@ -346,21 +390,21 @@ int main ( void )
                         }
                         qsort(arr, count, sizeof(TRecord), compareRecords);
                         printf("Hledani:\n");
-                    //    res = scanf(" %1000s %3s %d %d : %d %n", nz, m, &d, &hh, &mm, & bytes_now);
+                    
                         while ((res = scanf(" %1000s %3s %d %d : %d %n", nz, m, &d, &hh, &mm, & bytes_now) )){
                             if (res == -1) {
                                 break;
                             }
-                              if (checkInput(d, hh, mm, 0, &month, nz, m) == 1 && res == 5) {
+                            if (checkInput(d, hh, mm, 0, &month, nz, m) == 1 && res == 5) {
                                    initRequest(&request, d, hh, mm, month, nz);
                                    searchRecord(arr, request, count, m);
-                               } else {
+                            } else {
                                    printf("Nespravny vstup.\n");
                                    free(arr);
                                    return 0;
-                               }
+                            }
                         
-                           }
+                        }
                         
                         break;
                     }
@@ -368,14 +412,10 @@ int main ( void )
                     if (count == size-8) {
                         extendArray(&arr, &size);
                     }
-                  
-            }
-         
+
+                }
      }
  
-     
-    
-     
      if (borderControlFlag != 2) {
          printf("Nespravny vstup.\n");
          free(arr);

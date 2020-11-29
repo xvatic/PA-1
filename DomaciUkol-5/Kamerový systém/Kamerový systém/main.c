@@ -42,6 +42,11 @@ typedef struct Request {
 
 /*
    Function is for expansion of the dymamic array of type TRecord.
+ 
+   @param[out] rec  main input array
+   @param[in, out] size  current size of an array
+   
+   returns 0 at the end
 */
 int extendArray (TRecord ** rec, int* size) {
     *size *= 1.5;
@@ -51,6 +56,12 @@ int extendArray (TRecord ** rec, int* size) {
 
 /*
    Function is for expansion of the dymamic array of type TOutput.
+ 
+   @param[out] rec  temporary array which is used for search
+   @param[in, out] size  current size of an array
+   
+   returns 0 at the end
+   
 */
 int extendTempArray (TOutput ** rec, int* size) {
     *size *= 1.5;
@@ -60,7 +71,14 @@ int extendTempArray (TOutput ** rec, int* size) {
 
 /*
    This is a comparator for a TRecord type elements.
+   Priority is given to date, number of camera is lower
    Used in a qsort.
+ 
+   @param[in] a  first record element
+   @param[in] b  second record element
+   
+   
+   returns 0 if equal, 1 if a is later, -1 if b is later
 */
 int compareRecords (const void* a, const void* b) {
     TRecord *r1 = (TRecord*)a;
@@ -101,6 +119,12 @@ int compareRecords (const void* a, const void* b) {
 /*
    Function is for converting the decimal month representation to word.
    Used only for an output.
+ 
+   @param[in] m  month decimal representation
+   @param[out] month  month word representation
+   
+   
+   returns 0 at the end
 */
 int convertMonth (int m, char* month) {
     char months[12][4] = {
@@ -125,6 +149,12 @@ int convertMonth (int m, char* month) {
 /*
    This is a comparator for a TRecord type elements.
    Used in a search algorythm.
+ 
+   @param[in] a  first datetime element
+   @param[in] b  second datetime element
+   
+   
+   returns 0 if equal, 1 if a is later, -1 if b is later
 */
 int compareDates (const void* a, const void* b) {
     TDateTime *r1 = (TDateTime*)a;
@@ -159,6 +189,15 @@ int compareDates (const void* a, const void* b) {
 
 /*
    Function is for initializing the TRecord type element.
+   @param[out] recElem  element of a main input array
+   @param[in] d  day value
+   @param[in] hh   hour value
+   @param[in] mm  minute value
+   @param[in] nc   number of camera
+   @param[in] m  month(decimal representation)
+   @param[in] nz   car number
+ 
+   returns 0 at the end
 */
 int initRecord (TRecord* recElem, int d, int hh, int mm, int nc, int m, char* nz) {
     recElem->dt.mon = m;
@@ -171,6 +210,8 @@ int initRecord (TRecord* recElem, int d, int hh, int mm, int nc, int m, char* nz
 }
 /*
    Function is for initializing the TDateTime type element.
+ 
+ 
 */
 int initdt (TDateTime* recElem, TDateTime selectedTime) {
     recElem->mon = selectedTime.mon;
@@ -182,6 +223,17 @@ int initdt (TDateTime* recElem, TDateTime selectedTime) {
 
 /*
    Function is for initializing the TRequest type element.
+ 
+   @param[out] recElem  request
+   @param[in] d  day value
+   @param[in] hh   hour value
+   @param[in] mm  minute value
+   @param[in] nc   number of camera
+   @param[in] m  month(decimal representation)
+   @param[in] nz   car number
+   
+ 
+   returns 0 at the end
 */
 int initRequest (TRequest* recElem, int d, int hh, int mm, int m, char* nz) {
     recElem->dt.mon = m;
@@ -196,6 +248,14 @@ int initRequest (TRequest* recElem, int d, int hh, int mm, int m, char* nz) {
     Function creates an array of TOutput.
     This array contains only elements, which contain the expected car number.
     This method simplifies the search algorythm.
+ 
+    @param[in] arr  input array
+    @param[in] request   hour value
+    @param[in] size  size of dynamic input array
+    @param[in] m   month(word representation)
+    
+ 
+    returns 0 at the end
  */
 int searchRecord (TRecord* arr, TRequest request, int size, char* m) {
     int buffSize = SIZE;
@@ -308,6 +368,16 @@ int searchRecord (TRecord* arr, TRequest request, int size, char* m) {
 
 /*
    Function controls if the data from input is suitable for it's format.
+ 
+   @param[in] d  day value
+   @param[in] hh   hour value
+   @param[in] mm  minute value
+   @param[in] nc   number of camera
+   @param[in,out] month  month(decimal representation)
+   @param[in] nz   car number
+   @param[in] m   month(word representation)
+ 
+   returns 1 if input is correct, 0 if not
 */
 int checkInput (int d, int hh, int mm, int nc, int* month, char* nz, char* m) {
     if (hh > 23 || hh < 0 || mm > 59 || mm < 0 || d < 1) {

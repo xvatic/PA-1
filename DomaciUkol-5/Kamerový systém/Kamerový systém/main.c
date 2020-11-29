@@ -4,8 +4,8 @@
 #define SIZE 10
 
 /*
-   Tato struktura deklaruje formát data a času.
-   Používá se jako pole v jiných strukturách.
+   This structure declares the format of Date and Time.
+   Used as a part of other structures.
 */
 typedef struct DateTime{
     int mon;
@@ -15,7 +15,7 @@ typedef struct DateTime{
 } TDateTime;
 
 /*
-   Tato struktura se používá k reprezentaci dat pro výstup.
+   This structure is used for representation of the output data.
 */
 typedef struct Output {
     TDateTime dt;
@@ -24,7 +24,7 @@ typedef struct Output {
 } TOutput;
 
 /*
-   Tato struktura se používá k ukládání dat o záznamech z kamer.
+   This structure is used for storing the data about the camera records.
 */
 typedef struct Record {
     char rz[1001];
@@ -33,7 +33,7 @@ typedef struct Record {
 } TRecord;
 
 /*
-   Tato struktura se používá k reprezentaci dotazu k vyhledání záznamů.
+   This structure is used for representation of the search request.
 */
 typedef struct Request {
     char rz[1001];
@@ -41,7 +41,7 @@ typedef struct Request {
 } TRequest;
 
 /*
-   Funkce slouží k rozšíření pole typu TRecord.
+   Function is for expansion of the dymamic array of type TRecord.
 */
 int extendArray (TRecord ** rec, int* size) {
     *size *= 1.5;
@@ -50,7 +50,7 @@ int extendArray (TRecord ** rec, int* size) {
 }
 
 /*
-   Funkce slouží k rozšíření pole typu TOutput.
+   Function is for expansion of the dymamic array of type TOutput.
 */
 int extendTempArray (TOutput ** rec, int* size) {
     *size *= 1.5;
@@ -59,8 +59,8 @@ int extendTempArray (TOutput ** rec, int* size) {
 }
 
 /*
-   Toto je komparator pro TRecord.
-   Používá se pro třídění hlavního pole qsort-em.
+   This is a comparator for a TRecord type elements.
+   Used in a qsort.
 */
 int compareRecords (const void* a, const void* b) {
     TRecord *r1 = (TRecord*)a;
@@ -99,8 +99,8 @@ int compareRecords (const void* a, const void* b) {
 }
 
 /*
-   Toto je funkce pro převod číselné reprezentace měsíce na slovní.
-   Používá se pouze pro výstup.
+   Function is for converting the decimal month representation to word.
+   Used only for an output.
 */
 int convertMonth (int m, char* month) {
     char months[12][4] = {
@@ -123,8 +123,8 @@ int convertMonth (int m, char* month) {
 }
 
 /*
-   Toto je komparator pro TDateTime.
-   Používá se pouze pro vyhledávání.
+   This is a comparator for a TRecord type elements.
+   Used in a search algorythm.
 */
 int compareDates (const void* a, const void* b) {
     TDateTime *r1 = (TDateTime*)a;
@@ -158,7 +158,7 @@ int compareDates (const void* a, const void* b) {
 
 
 /*
-   Funkce funguje jako konstruktor pro TRecord.
+   Function is for initializing the TRecord type element.
 */
 int initRecord (TRecord* recElem, int d, int hh, int mm, int nc, int m, char* nz) {
     recElem->dt.mon = m;
@@ -170,7 +170,7 @@ int initRecord (TRecord* recElem, int d, int hh, int mm, int nc, int m, char* nz
     return 0;
 }
 /*
-   Funkce funguje jako konstruktor pro TDateTime.
+   Function is for initializing the TDateTime type element.
 */
 int initdt (TDateTime* recElem, TDateTime selectedTime) {
     recElem->mon = selectedTime.mon;
@@ -181,7 +181,7 @@ int initdt (TDateTime* recElem, TDateTime selectedTime) {
 }
 
 /*
-   Funkce funguje jako konstruktor pro TRequest.
+   Function is for initializing the TRequest type element.
 */
 int initRequest (TRequest* recElem, int d, int hh, int mm, int m, char* nz) {
     recElem->dt.mon = m;
@@ -192,9 +192,10 @@ int initRequest (TRequest* recElem, int d, int hh, int mm, int m, char* nz) {
     return 0;
 }
 /*
-    Funkce vytvoři pole TOutput pro hledání.
-    Toto pole obsahuje pouze záznamy s požadovaným vozem.
-    Tato metoda značně usnadňuje samotné hledání.
+    Function contains a search algorythm.
+    Function creates an array of TOutput.
+    This array contains only elements, which contain the expected car number.
+    This method simplifies the search algorythm.
  */
 int searchRecord (TRecord* arr, TRequest request, int size, char* m) {
     int buffSize = SIZE;
@@ -306,7 +307,7 @@ int searchRecord (TRecord* arr, TRequest request, int size, char* m) {
 }
 
 /*
-   Funkce kontroluje správnost zadaných údajů.
+   Function controls if the data from input is suitable for it's format.
 */
 int checkInput (int d, int hh, int mm, int nc, int* month, char* nz, char* m) {
     if (hh > 23 || hh < 0 || mm > 59 || mm < 0 || d < 1) {

@@ -5,30 +5,11 @@
 #define SIZE 10
 
 
-typedef struct DateTime{
-    int mon;
-    int day;
-    int hour;
-    int minute;
-} TDateTime;
-
-typedef struct Output {
-    TDateTime dt;
-    int amount;
-    int cams[1000];
-} TOutput;
-
-
 typedef struct Record {
     char* numb;
     char* name;
 } TRecord;
 
-
-typedef struct Request {
-    char rz[1001];
-    TDateTime dt;
-} TRequest;
 
 
 int extendArray (TRecord ** rec, int* size) {
@@ -39,7 +20,7 @@ int extendArray (TRecord ** rec, int* size) {
 
 
 int extendTempArray (char ** rec, int size) {
-    *rec = (char*)realloc(*rec, size*sizeof(TOutput));
+    *rec = (char*)realloc(*rec, (size+1)*sizeof(char));
     return 0;
 }
 
@@ -48,7 +29,7 @@ int convertT9(const char* str, char* par) {
     for(int i = 0; str[i]; i++){
       tmp[i] = tolower(str[i]);
     }
-    for (int i = 0; i<strlen(str); i++) {
+    for (int i = 0; i<(int)strlen(str); i++) {
         if(tmp[i] == 32 || tmp[i] == '1') {
             tmp[i] = '1';
         } else if ((tmp[i] > 96 && tmp[i] < 100) || tmp[i] == '2') {
@@ -122,6 +103,7 @@ int search(TRecord* arr, int count, char* param, int* overlap) {
 
 int digits_only(const char *s)
 {
+    
     while (*s) {
         if (isdigit(*s++) == 0) return 0;
     }
@@ -147,6 +129,15 @@ int searchExistingperson(TRecord* arr, int count, char *s) {
     return -1;
 }
 
+int countQuotes (char* str) {
+    int count = 0;
+    for(int i = 0; str[i]; i++){
+        if (str[i] == '\"') {
+            count++;
+        }
+    }
+    return count;
+}
 
 int main ( void )
  {
@@ -166,8 +157,20 @@ int main ( void )
 
     while(getline(&str, &len, stdin) != EOF){
         sscanf(str, "%c%n", &c, &bytes_now);
+        if (is_empty(str) == 1) {
+            printf("INVALID COMMAND\n");
+            continue;
+        }
         
         if (c == '+') {
+            if (strstr(str, "\"\"") != NULL) {
+                printf("INVALID COMMAND\n");
+                continue;
+            }
+            if (countQuotes(str) != 2) {
+                printf("INVALID COMMAND\n");
+                continue;
+            }
             char* piece = strtok(str, " ");
             if (strlen(piece) != 1 || piece[0] != c) {
                 printf("INVALID COMMAND\n");
@@ -184,8 +187,8 @@ int main ( void )
                 if (is_empty(piece) == 1) {
                     piece = strtok(NULL, "\"");
                 }
-                least = strtok(NULL, "\"");
-                if (least == NULL || is_empty(least) == 0) {
+                least = strtok(NULL, "\"\n");
+                if (least != NULL) {
                     printf("INVALID COMMAND\n");
                     
                     continue;
@@ -202,10 +205,10 @@ int main ( void )
             if (is_empty(piece) == 1) {
                 piece = strtok(NULL, "\"");
             }
-            least = strtok(NULL, "\"");
-            if (least == NULL || is_empty(least) == 0) {
+            least = strtok(NULL, "\"\n");
+            if (least != NULL) {
                 printf("INVALID COMMAND\n");
-                
+                free(arr[count].numb);
                 continue;
             }
             arr[count].name = (char *) malloc((strlen(piece)+1)*sizeof(char));
@@ -215,7 +218,7 @@ int main ( void )
                 extendArray(&arr, &size);
             }
             printf("NEW\n");
-            
+            continue;
         } else if (c == '?') {
             char* piece = strtok(str, " ");
             if (strlen(piece) != 1 || piece[0] != c) {
@@ -226,6 +229,11 @@ int main ( void )
             piece = strtok(NULL, " \n");
             
             int overlap = -1;
+            if (piece == NULL) {
+                printf("INVALID COMMAND\n");
+                
+                continue;
+            }
             if (digits_only(piece) == 0) {
                 printf("INVALID COMMAND\n");
                 
@@ -233,11 +241,11 @@ int main ( void )
             }
             least = strtok(NULL, " ");
             if (least != NULL) {
-                if (is_empty(least) == 0) {
+                
                     printf("INVALID COMMAND\n");
                     
                     continue;
-                }
+                
             }
             
             res = search(arr, count, piece, &overlap);
@@ -259,7 +267,11 @@ int main ( void )
                 continue;
             }
             piece = strtok(NULL, " \n");
-            
+            if (piece == NULL) {
+                printf("INVALID COMMAND\n");
+                
+                continue;
+            }
             if (digits_only(piece) == 0) {
                 printf("INVALID COMMAND\n");
                 
@@ -267,11 +279,11 @@ int main ( void )
             }
             least = strtok(NULL, " ");
             if (least != NULL) {
-                if (is_empty(least) == 0) {
+                
                     printf("INVALID COMMAND\n");
                     
                     continue;
-                }
+                
             }
             
             res = deleteUser(arr, count, piece);
@@ -297,7 +309,7 @@ int main ( void )
      
      free(arr);
      free(str);
-     free(least);
+     
      
      
      return 0;

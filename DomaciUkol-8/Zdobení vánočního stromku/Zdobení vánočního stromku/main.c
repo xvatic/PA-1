@@ -21,25 +21,84 @@ typedef struct TNode
 
 int                easyToCatchFire    ( TNODE           * root )
 {
-  /* TODO */
+    return 1;
 }
 
 int                cutBranch          ( TNODE          ** root,
                                         const char      * path )
 {
-  /* TODO */
+    return 1;
+
+}
+
+int res (TNODE ** root, char * path, int decor) {
+    int ind = (int)path[0] - 48;
+    char newpath[strlen(path)-1];
+    newpath[0] = '3';
+    for (int i = 0; i<strlen(path)-1; i++) {
+        newpath[i] = path[i+1];
+    }
+    if ((*root)->m_Branches[ind] == NULL) {
+        (*root)->m_Branches[ind] = (TNODE*)malloc(sizeof(TNODE));
+        (*root)->m_Branches[ind]->m_Parent = *root;
+        (*root)->m_Branches[ind]->m_Branches[0] = NULL;
+        (*root)->m_Branches[ind]->m_Branches[1] = NULL;
+        (*root)->m_Branches[ind]->m_Branches[2] = NULL;
+        (*root)->m_Branches[ind]->m_Decoration = 0;
+    }
+    if (newpath[0] == '3') {
+        (*root)->m_Branches[ind]->m_Decoration = decor;
+        return 1;
+    }
+    
+    res(&(*root)->m_Branches[ind], newpath, decor);
+    return 1;
 }
 
 int                setDecoration      ( TNODE          ** root,
-                                        const char      * path,
+                                        char      * path,
                                         int               decor )
 {
-  /* TODO */
+    if (!*root) {
+        *root = (TNODE*)malloc(sizeof(TNODE));
+        (*root)->m_Decoration = 0;
+        (*root)->m_Branches[0] = NULL;
+        (*root)->m_Branches[1] = NULL;
+        (*root)->m_Branches[2] = NULL;
+        (*root)->m_Parent = NULL;
+    }
+    
+    if (strcmp(path, "") == 0) {
+        (*root)->m_Decoration = decor;
+        return 1;
+    }
+    
+    int ind = (int)path[0] - 48;
+    char newpath[strlen(path)-1];
+    newpath[0] = '3';
+    for (int i = 0; i<strlen(path)-1; i++) {
+        newpath[i] = path[i+1];
+    }
+    if ((*root)->m_Branches[ind] == NULL) {
+        (*root)->m_Branches[ind] = (TNODE*)malloc(sizeof(TNODE));
+        (*root)->m_Branches[ind]->m_Branches[0] = NULL;
+        (*root)->m_Branches[ind]->m_Parent = *root;
+        (*root)->m_Branches[ind]->m_Branches[1] = NULL;
+        (*root)->m_Branches[ind]->m_Branches[2] = NULL;
+        (*root)->m_Branches[ind]->m_Decoration = 0;
+    }
+    if (newpath[0] == '3') {
+        (*root)->m_Branches[ind]->m_Decoration = decor;
+        return 1;
+    }
+    
+    res(&(*root)->m_Branches[ind], newpath, decor);
+    return 1;
 }
 
 void               destroyTree        ( TNODE           * root )
 {
-  /* TODO */
+    return;
 }
 
 #ifndef __PROGTEST__

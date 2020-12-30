@@ -77,6 +77,11 @@ int check(char* str) {
 }
 
 int main(int argc, const char * argv[]) {
+    char s[12] = "abcde";
+    int res = strlen(s);
+    printf("%d", res);
+    res = sizeof(s);
+    printf("%d", res);
     char *str = NULL;
     size_t len = 0;
     printf("Zadejte retezec:\n");

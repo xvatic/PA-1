@@ -1,198 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Bucket
-   uuid = "FA5B13BF-F1D5-428E-AAE5-39FE0E231A3B"
+   uuid = "8CB343D6-0331-404D-AC06-E28747E5BCAE"
    type = "1"
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A449BDA2-1F7B-4C16-9F6C-181B4621C801"
+            uuid = "3429E67D-0916-4918-9EB9-2E4F527FF692"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Palindromy/main.c"
+            filePath = "Zdobeni&#x301; va&#x301;noc&#x30c;ni&#x301;ho stromku/main.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "main(argc, argv)"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "setDecoration(root, path, decor)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8B59F8DA-C79B-4F08-9D50-DE7B89FABB6C"
+            uuid = "200CD802-E44C-43AA-A160-51C8F7932586"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Palindromy/main.c"
+            filePath = "Zdobeni&#x301; va&#x301;noc&#x30c;ni&#x301;ho stromku/main.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "main(argc, argv)"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "setDecoration(root, path, decor)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "BBCC3C4D-F34C-4085-95AC-8F5A1E7F54D0"
+            uuid = "C19A33BF-D115-4597-A9D7-998C0AB8FE76"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Palindromy/main.c"
+            filePath = "Zdobeni&#x301; va&#x301;noc&#x30c;ni&#x301;ho stromku/main.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
-            landmarkName = "main(argc, argv)"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "setDecoration(root, path, decor)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "12F3F8EF-0978-4035-B212-52FC1D8EF113"
+            uuid = "2686E42A-08E0-4277-9B82-CF206F8131E5"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Palindromy/main.c"
+            filePath = "Zdobeni&#x301; va&#x301;noc&#x30c;ni&#x301;ho stromku/main.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "main(argc, argv)"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "main()"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "58AD0BA6-6243-4B7A-89B3-768CCF6DB96C"
+            uuid = "1814DDA3-C70F-440C-9829-363775D0D991"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Palindromy/main.c"
+            filePath = "Zdobeni&#x301; va&#x301;noc&#x30c;ni&#x301;ho stromku/main.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "check(str)"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "setDecoration(root, path, decor)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "838FDC4C-C26E-4D7D-A324-790EE3C6831D"
+            uuid = "213F0903-9381-4BC8-ACC0-882B9542A89C"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Palindromy/main.c"
+            filePath = "Zdobeni&#x301; va&#x301;noc&#x30c;ni&#x301;ho stromku/main.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "check(str)"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "setDecoration(root, path, decor)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "667BDF9C-1E2F-4FD7-A188-F127A8649283"
+            uuid = "C8F05D2A-0C53-40A2-8AE1-59E21BE38FB1"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Palindromy/main.c"
+            filePath = "Zdobeni&#x301; va&#x301;noc&#x30c;ni&#x301;ho stromku/main.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "check(str)"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "setDecoration(root, path, decor)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "68ECCD9B-90F7-4D74-9EC3-E442CA958484"
+            uuid = "EE9A59D4-F9BC-4F28-B928-7462EE40A2C1"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Palindromy/main.c"
+            filePath = "Zdobeni&#x301; va&#x301;noc&#x30c;ni&#x301;ho stromku/main.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
-            landmarkName = "check(str)"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "setDecoration(root, path, decor)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "895CB6DD-D206-425F-9A59-E99EBB1335A4"
+            uuid = "ED20C732-7A64-4D83-B385-6E17488159E5"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Palindromy/main.c"
+            filePath = "Zdobeni&#x301; va&#x301;noc&#x30c;ni&#x301;ho stromku/main.c"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "check(str)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "57E42B9A-7BE4-49BA-A8A0-1C24881527EB"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Palindromy/main.c"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "check(str)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5D805EC1-D534-43E5-BD36-2767B5BC5FA2"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Palindromy/main.c"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "check(str)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "153A9B6B-0558-4615-A9F5-29337EABE1CC"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Palindromy/main.c"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "main(argc, argv)"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "res(root, path, decor)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>

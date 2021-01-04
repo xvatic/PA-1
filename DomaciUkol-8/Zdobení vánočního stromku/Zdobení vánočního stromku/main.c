@@ -21,6 +21,41 @@ typedef struct TNode
 
 int                easyToCatchFire    ( TNODE           * root )
 {
+    if (root->m_Branches[0] == NULL &&
+        root->m_Branches[1] == NULL &&
+        root->m_Branches[2] == NULL) {
+        return 1;
+    }
+    if (root->m_Branches[0] != NULL && (root->m_Branches[0]->m_Decoration + root->m_Decoration == 3)) {
+        return 0;
+    }
+    if (root->m_Branches[1] != NULL && (root->m_Branches[1]->m_Decoration + root->m_Decoration == 3)) {
+        return 0;
+    }
+    if (root->m_Branches[2] != NULL && (root->m_Branches[2]->m_Decoration + root->m_Decoration == 3)) {
+        return 0;
+    }
+    if (root->m_Branches[0] != NULL && root->m_Branches[1] != NULL && (root->m_Branches[0]->m_Decoration + root->m_Branches[1]->m_Decoration == 3)) {
+        return 0;
+    }
+    if (root->m_Branches[1] != NULL && root->m_Branches[2] != NULL && (root->m_Branches[1]->m_Decoration + root->m_Branches[2]->m_Decoration == 3)) {
+        return 0;
+    }
+    
+        int res1 = 1, res2 = 1, res3 = 1;
+        if (root->m_Branches[0] != NULL) {
+            res1 = easyToCatchFire(root->m_Branches[0]);
+        }
+        if (root->m_Branches[1] != NULL) {
+            res2 = easyToCatchFire(root->m_Branches[1]);
+        }
+        if (root->m_Branches[2] != NULL) {
+            res3 = easyToCatchFire(root->m_Branches[2]);
+        }
+        if (res1 == 0 || res2 == 0 || res3 == 0) {
+            return 0;
+        
+    }
     return 1;
 }
 

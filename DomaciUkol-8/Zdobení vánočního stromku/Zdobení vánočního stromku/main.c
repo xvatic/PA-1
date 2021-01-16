@@ -11,6 +11,7 @@
 #define DECORATION_SPARKLER      2
 
 
+
 typedef struct TNode
 {
   struct TNode   * m_Parent;
@@ -21,6 +22,7 @@ typedef struct TNode
 
 int                easyToCatchFire    ( TNODE           * root )
 {
+    
     if (root->m_Branches[0] == NULL &&
         root->m_Branches[1] == NULL &&
         root->m_Branches[2] == NULL) {
@@ -94,6 +96,11 @@ int                setDecoration      ( TNODE          ** root,
                                         char      * path,
                                         int               decor )
 {
+    int* a[20];
+    int b =
+    *a[0] = 5;
+    *a[1] = 6;
+    printf("%d", *a[0]);
     if (!*root) {
         *root = (TNODE*)malloc(sizeof(TNODE));
         (*root)->m_Decoration = 0;
